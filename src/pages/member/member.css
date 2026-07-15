@@ -1,0 +1,188 @@
+.member-shell {
+  min-height: 100vh;
+  background: var(--paper);
+  font-family: var(--font-body);
+  color: var(--graphite);
+}
+
+.member-content {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.page-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.page-sub {
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+/* Gym grid */
+.gym-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.gym-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 22px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.gym-card:hover { transform: translateY(-3px); }
+
+.gym-card-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.gym-card-location {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Gym details */
+.gym-detail-header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+
+.gym-detail-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.gym-detail-meta {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.plan-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.plan-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 8px 0;
+}
+
+.plan-duration {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.plan-benefits {
+  font-size: 13px;
+  color: var(--graphite);
+  margin-bottom: 16px;
+  flex: 1;
+  white-space: pre-line;
+}
+
+/* Table (subscriptions / payments) */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.data-table th {
+  text-align: left;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 12px 16px;
+}
+
+.data-table td {
+  padding: 12px 16px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-Active { background: #E5F6EA; color: #1B7A3D; }
+.status-Pending { background: #FFF4DE; color: #B8790C; }
+.status-Expired { background: #F1F1F1; color: #6B6F76; }
+.status-Cancelled { background: #FDEDE7; color: #A03D22; }
+.status-Paid { background: #E5F6EA; color: #1B7A3D; }
+.status-Failed { background: #FDEDE7; color: #A03D22; }
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 60px 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.back-link:hover { color: var(--graphite); }
+
+.cancel-link {
+  background: none;
+  border: none;
+  color: var(--ember);
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+.cancel-link:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,4 +1,8 @@
 import React, { createContext, useContext, useState } from "react";
+//React → Required to write JSX.
+//createContext → Creates a global storage.
+//useContext → Reads data from that global storage.
+//useState → Stores and updates data.
 
 const AuthContext = createContext(null);
 

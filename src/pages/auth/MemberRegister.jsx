@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerMember } from "../../api/authApi";
 import { useAuth } from "../../context/AuthContext";
+import CloseButton from "../../components/CloseButton";
+import { extractErrorMessage } from "../../utils/extractErrorMessage";
 import "./auth.css";
 
 export default function MemberRegister() {
@@ -22,15 +24,7 @@ export default function MemberRegister() {
       loginUser(res.data);
       navigate("/member/dashboard");
     } catch (err) {
-    const data = err.response?.data;
-    const message =
-      data?.message ||       // { message: "..." }
-      data?.Message ||       // { Message: "..." } (capital M)
-      data?.error ||         // { error: "..." }
-      data?.errors?.[0] ||   // { errors: ["..."] }
-      (typeof data === "string" ? data : null) ||
-      "Registration failed. Please try again.";
-    setError(message);
+      setError(extractErrorMessage(err, "Registration failed. Please try again."));
     } finally {
       setLoading(false);
     }
@@ -38,6 +32,7 @@ export default function MemberRegister() {
 
   return (
     <div className="auth-shell">
+      <CloseButton />
       <span className="auth-brand">Fit_Elite</span>
       <div className="auth-card">
         <h2 className="auth-title">Create your account</h2>

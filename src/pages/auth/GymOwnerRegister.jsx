@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerGymOwner } from "../../api/authApi";
 import { useAuth } from "../../context/AuthContext";
+import CloseButton from "../../components/CloseButton";
+import { extractErrorMessage } from "../../utils/extractErrorMessage";
 import "./auth.css";
 
 const initialState = {
@@ -30,42 +32,32 @@ export default function GymOwnerRegister() {
     setStep(2);
   };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError("");
-  setLoading(true);
-  try {
-    const payload = {
-      ...form,
-      gym: {
-        ...form.gym,
-        email: form.gym.email?.trim() === "" ? null : form.gym.email,
-        addressLine2: form.gym.addressLine2?.trim() === "" ? null : form.gym.addressLine2,
-      }
-    };
-    const res = await registerGymOwner(payload);
-    loginUser(res.data);
-    navigate("/owner/dashboard");
-  } catch (err) {
-  const data = err.response?.data;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+    try {
+      const payload = {
+        ...form,
+        gym: {
+          ...form.gym,
+          email: form.gym.email?.trim() === "" ? null : form.gym.email,
+          addressLine2: form.gym.addressLine2?.trim() === "" ? null : form.gym.addressLine2,
+        }
+      };
+      const res = await registerGymOwner(payload);
+      loginUser(res.data);
+      navigate("/owner/dashboard");
+    } catch (err) {
+      setError(extractErrorMessage(err, "Registration failed. Please try again."));
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  let message = "Registration failed. Please try again.";
-
-  if (data?.message) {
-    message = data.message;
-  } else if (data?.errors) {
-   
-    const firstKey = Object.keys(data.errors)[0];
-    message = data.errors[firstKey]?.[0] || message;
-  }
-
-  setError(message);
-  } finally {
-    setLoading(false);
-  }
-};
   return (
     <div className="auth-shell">
+      <CloseButton />
       <span className="auth-brand">Fit_Elite</span>
       <div className="auth-card wide">
         <div className="plate-track">
@@ -89,16 +81,16 @@ export default function GymOwnerRegister() {
                 <label>Email</label>
                 <input type="email" name="email" value={form.email} onChange={handlePersonalChange} required />
               </div>
-              
-                <div className="field-group">
-                  <label>Phone number</label>
-                  <input name="phoneNumber" value={form.phoneNumber} onChange={handlePersonalChange} />
-                </div>
-                <div className="field-group">
-                  <label>Password</label>
-                  <input type="password" name="password" value={form.password} onChange={handlePersonalChange} required minLength={6} />
-                </div>
-             
+
+              <div className="field-group">
+                <label>Phone number</label>
+                <input name="phoneNumber" value={form.phoneNumber} onChange={handlePersonalChange} />
+              </div>
+              <div className="field-group">
+                <label>Password</label>
+                <input type="password" name="password" value={form.password} onChange={handlePersonalChange} required minLength={6} />
+              </div>
+
               <button className="btn-primary" type="submit">Continue to gym details</button>
             </form>
           </>

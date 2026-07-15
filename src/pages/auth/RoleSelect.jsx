@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import CloseButton from "../../components/CloseButton";
 import "./auth.css";
 
 export default function RoleSelect() {
@@ -7,6 +8,7 @@ export default function RoleSelect() {
 
   return (
     <div className="auth-shell">
+      <CloseButton />
       <span className="auth-brand">Fit_Elite</span>
       <h1 className="role-heading">How are you joining Fit_Elite?</h1>
       <p className="role-sub">Pick the account type that matches what you're here to do.</p>

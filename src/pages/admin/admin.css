@@ -1,0 +1,12 @@
+.admin-shell {
+  min-height: 100vh;
+  background: var(--paper);
+  font-family: var(--font-body);
+  color: var(--graphite);
+}
+
+.admin-content {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}

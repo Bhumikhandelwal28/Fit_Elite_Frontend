@@ -1,0 +1,17 @@
+:root {
+  --ink: #14161C;
+  --paper: #F7F5F0;
+  --volt: #C8F169;
+  --ember: #FF6B47;
+  --graphite: #1B1E24;
+  --muted: #868C96;
+  --line: #E4E1D8;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
