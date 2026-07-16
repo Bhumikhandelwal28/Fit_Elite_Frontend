@@ -1,8 +1,4 @@
 import React, { createContext, useContext, useState } from "react";
-//React → Required to write JSX.
-//createContext → Creates a global storage.
-//useContext → Reads data from that global storage.
-//useState → Stores and updates data.
 
 const AuthContext = createContext(null);
 
@@ -13,14 +9,15 @@ export function AuthProvider({ children }) {
   });
 
   const loginUser = (data) => {
-    // data = { token, userId, email, fullName, role, gymId? }
     localStorage.setItem("token", data.token);
+    localStorage.setItem("refreshToken", data.refreshToken);
     localStorage.setItem("user", JSON.stringify(data));
     setUser(data);
   };
 
   const logoutUser = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("refreshToken");
     localStorage.removeItem("user");
     setUser(null);
   };

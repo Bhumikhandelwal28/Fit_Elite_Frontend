@@ -19,6 +19,7 @@ import GymProfile from "./pages/gymOwner/GymProfile";
 import ManagePlans from "./pages/gymOwner/ManagePlans";
 import MemberList from "./pages/gymOwner/MemberList";
 import PaymentReports from "./pages/gymOwner/PaymentReports";
+import Profile from "./pages/Profile";
 
 import GymApprovalList from "./pages/admin/GymApprovalList";
 import UserList from "./pages/admin/UserList";
@@ -95,6 +96,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>{}
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path="/member/dashboard"

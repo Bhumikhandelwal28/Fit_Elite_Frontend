@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import axiosInstance from "../../api/axiosInstance";
+import { useNavigate } from "react-router-dom";
 import "../../styles/dashboard-shared.css";
 
 function urgencyTier(daysLeft) {
@@ -9,10 +10,11 @@ function urgencyTier(daysLeft) {
   if (daysLeft <= 14) return "soon";
   return "healthy";
 }
-
+//component
 export default function MemberDashboard() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     axiosInstance
@@ -22,7 +24,6 @@ export default function MemberDashboard() {
   }, []);
 
   const tier = data ? urgencyTier(data.daysLeft) : "healthy";
-  // Visual fill only — capped against a typical 30-day billing cycle, not the plan's real length.
   const progressPct =
     data && data.daysLeft !== null ? Math.min(100, Math.round((data.daysLeft / 30) * 100)) : 100;
 
@@ -106,9 +107,9 @@ export default function MemberDashboard() {
                 <span className="status-ring__value">{data.daysLeft ?? "—"}</span>
                 <span className="status-ring__label">days</span>
               </div>
-              <a href="/subscriptions" className="btn-card">
+              <button className="btn-card" onClick={() => navigate("/member/subscriptions")}>
                 {tier === "critical" ? "Renew Now" : "Manage Plan"}
-              </a>
+              </button>
             </div>
           </div>
         )}
@@ -116,9 +117,9 @@ export default function MemberDashboard() {
         {data && !data.hasActivePlan && (
           <div className="empty-state">
             <p>You don't have an active plan yet. Browse gyms to get started!</p>
-            <a href="/gyms" className="btn-primary">
+            <button className="btn-primary" onClick={() => navigate("/member/gyms")}>
               Browse Gyms
-            </a>
+            </button>
           </div>
         )}
       </div>

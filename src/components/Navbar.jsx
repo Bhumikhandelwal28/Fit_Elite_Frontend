@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./Navbar.css";
+import ProfileIcon from "./ProfileIcon";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -40,7 +41,8 @@ export default function Navbar() {
             <button className="nav-btn ghost" onClick={() => navigate("/member/gyms")}>Browse Gyms</button>
             <button className="nav-btn ghost" onClick={() => navigate("/member/subscriptions")}>My Subscriptions</button>
             <button className="nav-btn ghost" onClick={() => navigate("/member/payments")}>Payment History</button>
-            <button className="nav-btn solid" onClick={handleLogout}>Logout</button>
+            <ProfileIcon />
+            
           </>
         )}
 
@@ -50,7 +52,8 @@ export default function Navbar() {
             <button className="nav-btn ghost" onClick={() => navigate("/owner/plans")}>Plans</button>
             <button className="nav-btn ghost" onClick={() => navigate("/owner/members")}>Members</button>
             <button className="nav-btn ghost" onClick={() => navigate("/owner/payments")}>Payments</button>
-            <button className="nav-btn solid" onClick={handleLogout}>Logout</button>
+            <ProfileIcon />
+            
           </>
         )}
 
@@ -60,7 +63,7 @@ export default function Navbar() {
           <button className="nav-btn ghost" onClick={() => navigate("/admin/approvals")}>Approvals</button>
           <button className="nav-btn ghost" onClick={() => navigate("/admin/users?role=GymOwner")}>Gym Owners</button>
           <button className="nav-btn ghost" onClick={() => navigate("/admin/users?role=Member")}>Members</button>
-          <button className="nav-btn solid" onClick={handleLogout}>Logout</button>
+          <ProfileIcon />
         </>
       )}
       </div>
